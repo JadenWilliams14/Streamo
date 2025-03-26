@@ -4,7 +4,7 @@ Streamo is a Video streaming platform copy that allows users to register account
 Steps to Set up Environment:
 
 1. Open a Command terminal with anaconda and change directory to where these files are stored on your system.
-2. Run 'conda create -n streamoflaskenv python=3.12' and type 'y' to proceed
+2. Run 'conda create -n streamoflaskenv python=3.13' and type 'y' to proceed
 3. 'activate streamoflaskenv' on windows or 'source activate streamoflaskenv' on Mac
 4. pip install -r requirements.txt
 
