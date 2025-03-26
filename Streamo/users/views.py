@@ -55,24 +55,3 @@ def logout():
     return redirect(url_for("core.index"))
 
 
-# If I NEED TO ADD AN ACCOUNT PAGE
-
-# account (update UserForm)
-# @users.route("/account", methods=['GET', 'POST'])
-# @login_required
-# def account():
-
-#     form = UpdateUserForm()
-
-#     if form.validate_on_submit():
-
-#         current_user.username = form.username.data
-#         db.session.commit()
-#         flash('User Account Updated')
-#         return redirect(url_for('users.account'))
-
-#     elif request.method == 'GET':
-#         form.username.data = current_user.username
-
-#     return render_template('account.html', form=form)
-
