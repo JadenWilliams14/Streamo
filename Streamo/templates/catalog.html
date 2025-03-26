@@ -1,0 +1,71 @@
+{% extends 'base.html' %} {% block content %}
+
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Catalog</h1>
+      <p class="lead">
+        Here is a catalog of all the Movies and Shows we have available
+      </p>
+    </div>
+    <form class="d-flex mt-3" role="search" method="GET">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Search through Titles"
+        aria-label="Search"
+        name="search"
+      />
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        name="filter"
+      >
+        <option selected>Filter by Genre</option>
+        <option value="Drama">Drama</option>
+        <option value="Kids">Kids</option>
+        <option value="Musical">Musical</option>
+        <option value="Horror">Horror</option>
+        <option value="Comedy">Comedy</option>
+      </select>
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</section>
+
+<div class="album py-5 bg-body-tertiary">
+  <div class="container">
+    {% if movies_shows|length > 0 %}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      {% for movie in movies_shows %}
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src="{{movie.poster}}" class="bd-placeholder-img card-img-top" />
+          <div class="card-body">
+            <a
+              class="card-text fw-bold text-uppercase"
+              href="{{url_for('content.detail',title=movie.title)}}"
+              >{{movie.title}}</a
+            >
+            <p class="card-text">{{movie.description}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <small class="text-body-secondary">{{movie.genre}}</small>
+              <small class="text-body-secondary">{{movie.release}}</small>
+              <small class="text-body-secondary">{{movie.duration}}m</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="">
+      <h1 class="text-dark">
+        None of Our Movies or Shows titles contain the searched terms
+      </h1>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

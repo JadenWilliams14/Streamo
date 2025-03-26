@@ -1,0 +1,59 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="col-sm-8 m-auto mt-3" style="height: 400px">
+  <div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="d-flex justify-content-center align-items-center">
+          <div
+            class="d-flex justify-content-center align-items-center"
+            style="width: 480px; height: 720px"
+          >
+            <h1 class="d-inline">Favorites:</h1>
+          </div>
+        </div>
+      </div>
+      {% for film in films %}
+      <div class="carousel-item">
+        <div class="d-flex flex-column align-items-center">
+          <h2>{{film.title}}</h2>
+          <img
+            src="{{film.poster}}"
+            class="img-thumbnail"
+            style="width: 480px; height: 720px"
+          />
+          <form method="POST">
+            <button
+              type="submit"
+              name="remove_favorite"
+              class="w-80 mb-2 btn btn-lg rounded-3 btn-primary"
+              value="{{film.title}}"
+            >
+              Remove from Favorites
+            </button>
+          </form>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExample"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExample"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+{% endblock %}
